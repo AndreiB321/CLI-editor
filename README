@@ -1,0 +1,50 @@
+Andrei B
+
+image_editor.c
+MAIN:
+	Am citit fiecare linie de la tastatura si trimitem sirul de caractere
+	mai departe la functia execute_operation pentru a rezolva cerinta. Daca
+	valoarea returnata a functiei este diferita de 0, atunci exista o
+	problema cu memoria, astfel se elibereaza memoria ramasa alocata, se 
+	transmite un mesaj de eroare si se incheie programul.
+	
+image.h
+	Am declarat structurile si functiile. images_d stocheaza matricea RGB,
+	dimensiunile, valorile SELECT, tipul imaginii.
+	
+image.c
+execute_operation:
+	Verificam tipul operatiei ce urmeaza realizat si apelam functia
+	corespunzatoare. Daca inputul este invalid, afisam mesajul cerut;
+	
+load_file:
+	Stocam imaginea daca o gasim ( daca nu, eliberam memoria din matricea
+	initiala), si stocam atributele necesare.
+	
+select_file:
+	Decodificam inputul primit si verficam daca este valid. In acest caz
+	modificam valorile parametrilor.
+	
+rotate_file:
+	Verficam daca unghiul este divizibil cu 90 si suprafata de selectie.
+	Apoi apelam functia rotate90 de cate ori este nevoie.
+	
+crop_file:
+	Copiem intr-o matrice auxiliara suprafata selectata, realocam matricea,
+	si apoi o copiem din matricea auxiliara.
+	
+grayscale_file:
+	Aplicam algoritmul de grayscale pe suprafata selectata, daca fisierul
+	e color.
+	
+sepia_file:
+	Aplicam algoritmul de grayscale pe suprafata selectata, daca fisierul
+	e color.
+	
+save_file:
+	Stocam matricea intr-un fisier cerut. Daca se schimba tipul fisierului,
+	modificam "P".
+	
+help.c
+	Am declarat functiile ce ajuta la modularizarea codului.
+	
